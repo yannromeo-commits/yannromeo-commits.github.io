@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>MYsel · Votre présentation</title>
+<meta property="og:title" content="Votre présentation MYsel">
+<meta property="og:description" content="Accès personnel protégé par code.">
+<meta name="theme-color" content="#faf8f5">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="lock"><div class="box"><span class="cimg" style="--ar:1634/622;background-image:url(https://mysel.fr/assets/mysel-logo-baseline-C7GUlpCX.png);background-size:117.50% auto;background-position:47.20% 53.16%" role="img" aria-label="MYsel"></span><h1>Votre présentation</h1>
+<p id="msg">Saisissez le code d'accès communiqué par MYsel pour ouvrir votre simulation.</p>
+<form id="f" onsubmit="return false"><input id="c" autocomplete="off" autocapitalize="characters" maxlength="14" placeholder="CODE" aria-label="Code d'accès"><button id="b" type="submit">Accéder à la présentation</button></form>
+<div class="err" id="e"></div><p class="small" id="exp"></p></div></div>
+<nav class="dots" aria-label="Sections"></nav>
+<div class="navbtns"><button id="fs" aria-label="Plein écran" title="Plein écran (F)">⤢</button><button id="prev" aria-label="Précédent">↑</button><button id="next" aria-label="Suivant">↓</button></div>
+<div class="counter" id="counter"></div>
+<div class="modal" id="modal" aria-hidden="true"><div class="mbox" role="dialog" aria-modal="true"><button class="mclose" aria-label="Fermer">×</button><div id="mbody"></div></div></div>
+<div id="app"></div>
+<template id="tpl"><main>
+<!-- 1 -->
+<section class="slide" id="s1">
+  <header class="topbar">
+    <span class="cimg" style="--ar:1634/622;background-image:url(https://mysel.fr/assets/mysel-logo-baseline-C7GUlpCX.png);background-size:117.50% auto;background-position:47.20% 53.16%" role="img" aria-label="MYsel"></span>
+    <div class="who"><b>{{v0}}</b>{{v1}}</div>
+  </header>
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv">Simulation personnalisée</div>
+      <h1 class="rv d1">Votre passage<br>en <em>SEL</em></h1>
+      <p class="hero-sub rv d2">{{v2}}<span>{{v3}}</span></p>
+      <div class="teaser rv d3"><b class="num" data-count="{{v121}}">{{v4}}</b><span>d'épargne en plus<br>chaque année avec la SEL</span></div>
+      <p class="scrollhint rv d4">Faites défiler ou utilisez les flèches ↓</p>
+    </div>
+    <span class="cimg illu rv d2" style="--ar:843/692;background-image:url(https://mysel.fr/assets/origami-bnc-sel-CnXs3glJ.png);background-size:121.47% auto;background-position:56.35% 40.06%"></span>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide alt" id="s2">
+  <div class="wrap">
+    <div class="eyebrow rv"><i>{{v5}}</i>Votre situation aujourd'hui</div>
+    <h2 class="rv d1">En BNC, <em>{{v6}}</em> de résultat</h2>
+    <p class="lead rv d1">{{v7}}</p>
+    <div class="card rv d2" style="margin-top:18px">
+      <div class="fall" id="fall"></div>
+    </div>
+    <div class="card cotis rv d3">
+      <div class="catitle"><span>Le détail de vos cotisations sociales</span></div>
+      <div class="split thin" id="cs"></div>
+      <div class="leg4" id="csl"></div>
+      <div class="tot"><span>Total des cotisations sociales</span><b class="num">{{v8}}</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="s3">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v9}}</i>Le train de vie du foyer</div>
+      <h2 class="rv d1">Ce dont votre foyer a besoin</h2>
+      <div class="eq rv d2">
+        <div><b class="num">{{v10}}</b><span>dépenses du foyer</span></div>
+        <span class="op">+</span>
+        <div class="hl"><b class="num">{{v11}}</b><span>{{v12}}</span></div>
+      </div>
+      <div class="bignum rv d3"><span class="num" data-count="{{v122}}">{{v13}}</span> €<small>/ mois</small></div>
+      <p class="peran rv d3">Soit <b class="num">{{v14}}</b> {{v15}}</p>
+    </div>
+    <div class="rv d2">
+      <div class="cats" id="cats"></div>
+      <p class="hint">Touchez une catégorie pour voir le détail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3b -->
+<section class="slide alt" id="s3b">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v16}}</i>Votre rémunération</div>
+      <h2 class="rv d1">Ce qu'il vous faut <em>percevoir</em></h2>
+      <p class="lead rv d1">Votre conjoint apporte une partie des revenus du foyer. Votre rémunération complète le reste, impôt compris.</p>
+      <div class="bill rv d2">
+        <div class="ln"><span>Besoins annuels du foyer</span><b class="num">{{v17}}</b></div>
+        <div class="ln"><span>Impôt sur le revenu du foyer</span><b class="num">{{v18}}</b></div>
+        <div class="ln minus"><span>Revenus de votre conjoint</span><b class="num">{{v19}}</b></div>
+        <div class="ln tot"><span>Rémunération nette nécessaire</span><b class="num">{{v20}}</b></div>
+        <div class="ln rnd"><span>Arrondi retenu</span><b class="num">{{v21}}</b></div>
+      </div>
+      <p class="rv d3" style="font-size:14px;color:var(--muted);margin-top:10px">{{v22}}</p>
+    </div>
+    <div class="card remu rv d2">
+      <span class="k">Rémunération nette versée par la SEL</span>
+      <div class="bignum" style="color:var(--orange)"><span class="num" data-count="{{v123}}">{{v23}}</span> €<small>/ an</small></div>
+      <div class="per">soit <b class="num">{{v24}}</b> nets par mois</div>
+      <p>C'est ce que la SEL vous versera. Le reste de votre chiffre d'affaires, après cotisations et impôt sur les sociétés, reste en réserve dans la société.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="s4">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v25}}</i>Comment fonctionne la SEL</div>
+      <h2 class="rv d1">Votre activité passe <em>par une société</em></h2>
+      <div class="steps">
+        <div class="step rv d1"><div class="n">{{v26}}</div><h3>La SEL encaisse vos honoraires</h3><p>Le chiffre d'affaires est facturé par la société.</p></div>
+        <div class="step rv d2"><div class="n">{{v27}}</div><h3>Elle vous verse une rémunération</h3><p>Calibrée pour couvrir le train de vie du foyer.</p></div>
+        <div class="step rv d3"><div class="n">{{v28}}</div><h3>Le surplus reste dans la société</h3><p>{{v29}}</p></div>
+      </div>
+    </div>
+    <div class="card rv d2"><div class="sankey" id="sankey"></div></div>
+  </div>
+</section>
+
+<!-- 4b -->
+<section class="slide alt" id="s4b">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v30}}</i>Le détail</div>
+      <h2 class="rv d1">BNC et SEL, <em>ligne à ligne</em></h2>
+      <p class="lead rv d1">D'où vient l'écart : des cotisations plus faibles, moins d'impôt sur le revenu, et un surplus qui reste dans la société.</p>
+      <div class="delta rv d3">
+        <span class="k">Avantage SEL</span>
+        <b class="num">+<span data-count="{{v124}}">{{v31}}</span> €<small>/ an</small></b>
+        <span class="calc num">{{v32}}</span>
+      </div>
+    </div>
+    <div class="card cmpt rv d2">
+      <table>
+        <thead><tr><th></th><th>BNC</th><th>SEL</th></tr></thead>
+        <tbody>
+            <tr class="grp"><td colspan="3">L'activité</td></tr>
+            <tr class=""><td>Chiffre d'affaires</td><td class="num">{{v33}}</td><td class="num s">{{v34}}</td></tr>
+            <tr class=""><td>Frais généraux</td><td class="num">{{v35}}</td><td class="num s">{{v36}}</td></tr>
+            <tr class="k"><td>Rémunération nette (gérant SEL)</td><td class="num">–</td><td class="num s">{{v37}}</td></tr>
+            <tr class="k"><td>Charges sociales obligatoires</td><td class="num">{{v38}}</td><td class="num s">{{v39}}</td></tr>
+            <tr class=""><td>Impôt sur les sociétés</td><td class="num">–</td><td class="num s">{{v40}}</td></tr>
+            <tr class=""><td>Bénéfice net</td><td class="num">{{v41}}</td><td class="num s">{{v42}}</td></tr>
+            <tr class="grp"><td colspan="3">L'impôt sur le revenu</td></tr>
+            <tr class=""><td>Votre part</td><td class="num">{{v43}}</td><td class="num s">{{v44}}</td></tr>
+            <tr class=""><td>Part de votre conjoint</td><td class="num">{{v45}}</td><td class="num s">{{v46}}</td></tr>
+            <tr class="k"><td>Total du foyer</td><td class="num">{{v47}}</td><td class="num s">{{v48}}</td></tr>
+            <tr class="grp"><td colspan="3">L'épargne</td></tr>
+            <tr class=""><td>Revenu net après impôt</td><td class="num">{{v49}}</td><td class="num s">{{v50}}</td></tr>
+            <tr class=" clk"><td>Besoins du foyer</td><td class="num"><button class="info" data-s="bnc" data-k="bs">{{v51}}<i>i</i></button></td><td class="num s"><button class="info" data-s="sel" data-k="bs">{{v52}}<i>i</i></button></td></tr>
+            <tr class=" clk"><td>Votre part des besoins</td><td class="num"><button class="info" data-s="bnc" data-k="pb">{{v53}}<i>i</i></button></td><td class="num s"><button class="info" data-s="sel" data-k="pb">{{v54}}<i>i</i></button></td></tr>
+            <tr class="k clk"><td>Votre épargne personnelle</td><td class="num"><button class="info" data-s="bnc" data-k="ep">{{v55}}<i>i</i></button></td><td class="num s"><button class="info" data-s="sel" data-k="ep">{{v56}}<i>i</i></button></td></tr>
+            <tr class="k o"><td>Épargne dans la société (réserves)</td><td class="num">–</td><td class="num s">{{v57}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide" id="s5">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow rv"><i>{{v58}}</i>BNC ou SEL</div>
+        <h2 class="rv d1">Moins de cotisations, moins d'impôt</h2>
+      </div>
+      <span class="cimg rv d2" style="--ar:727/694;background-image:url(https://mysel.fr/assets/origami-audit-remuneration-DVCNfQ_-.png);background-size:140.85% auto;background-position:45.79% 52.73%"></span>
+    </div>
+    <div class="cmp2" id="cmp"></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide alt" id="s6">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v59}}</i>Votre capacité d'épargne</div>
+      <h2 class="rv d1">Vous épargnez <em>plus du double</em></h2>
+      <ul class="keylist rv d2">
+        <li class="b">En BNC, il vous reste <b class="num">{{v60}}</b> par an une fois le foyer financé et l'impôt payé.</li>
+        <li>En SEL, votre rémunération finance le train de vie du foyer, et la société met <b class="num">{{v61}}</b> de côté chaque année. Au total : <b class="num">{{v62}}</b> d'épargne.</li>
+      </ul>
+      <p class="rv d2" style="font-size:14px;color:var(--muted);margin-top:12px">Épargne calculée sur votre part des revenus du foyer, et donc sur votre part des besoins et de l'impôt.</p>
+      <div class="gain rv d3">
+        <div><b class="num">+<em data-count="{{v125}}" style="font-style:normal">{{v63}}</em> €</b><span>d'épargne en plus par an</span></div>
+        <div><b class="num">{{v64}}</b><span>de capacité d'épargne</span></div>
+      </div>
+      <p class="note rv d4">{{v65}}</p>
+    </div>
+    <div class="card rv d2">
+      <div class="cols" id="cols">
+        <div class="col"><div class="top num">{{v66}}</div><div class="stack"><div class="seg" style="background:var(--bnc)" data-h="{{v126}}">Épargne perso</div></div><div class="cap">BNC</div></div>
+        <div class="col"><div class="top num" style="color:var(--orange)">{{v67}}</div><div class="stack"><div class="seg" style="background:var(--orange)" data-h="{{v127}}">Réserves SEL</div></div><div class="cap">SEL</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6b -->
+<section class="slide" id="s6b">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v68}}</i>Valorisation de patientèle</div>
+      <h2 class="rv d1">Et si on valorisait <em>votre patientèle</em> ?</h2>
+      <p class="lead rv d1">Pour un libéral de santé, la patientèle n'est pas qu'un flux d'activité : c'est un actif professionnel construit au fil des années. En BNC, elle est difficilement monétisable. Avec la SEL, votre société vous la rachète.</p>
+      <div class="vsteps rv d2">
+        <div class="vs"><span class="n">{{v69}}</span><div><b>La SEL rachète votre patientèle : <span class="o">{{v70}}</span></b><span>{{v71}}</span></div></div>
+        <div class="vs"><span class="n">{{v72}}</span><div><b>{{v73}}</b><span>Il vous reste un net vendeur d'environ <b>{{v74}}</b>.</span></div></div>
+        <div class="vs"><span class="n">{{v75}}</span><div><b>Le net est placé sur votre compte courant d'associé</b><span>On réintègre cet argent sur votre compte courant d'associé : il devient une réserve dans laquelle vous pouvez piocher sans fiscalité.</span></div></div>
+      </div>
+      <div class="vfin rv d3"><b>Comment la société finance-t-elle ce rachat ?</b> Avec un crédit professionnel : la SEL emprunte, vous paie la patientèle et rembourse sur la durée. La valorisation est dimensionnée pour préserver une capacité d'épargne dans la société.
+        <div class="loan"><div><span>Crédit</span><b>{{v76}}</b></div><div><span>Mensualité</span><b id="ln_m"></b></div><div><span>Coût du crédit</span><b id="ln_c"></b></div><div><span>Impact sur les réserves</span><b id="ln_i"></b></div></div>
+      </div>
+    </div>
+    <div class="card vcard rv d2">
+      <span class="cimg vimg" style="--ar:774/668;background-image:url(https://mysel.fr/assets/benefit-patientele-Dn0xCnm0.png);background-size:132.30% auto;background-position:52.00% 49.72%"></span>
+      <span class="k">Valorisation estimée de votre patientèle</span>
+      <div class="bignum"><span class="num" data-count="{{v128}}">{{v77}}</span> €</div>
+      <p class="vby">Estimation réalisée avec <b>Philippe Santini</b>, expert-comptable.</p>
+      <div class="vnet"><div><span>Impôt sur la plus-value</span><b class="num">{{v78}}</b></div><div><span>Net pour vous</span><b class="num">{{v79}}</b></div></div>
+      <p class="vquote2">Chez MYsel, nous intégrons la question de la valorisation dès l'analyse initiale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide alt" id="s7">
+  <div class="wrap">
+    <div class="eyebrow rv"><i>{{v80}}</i>Projection jusqu'à la retraite</div>
+    <h2 class="rv d1"><em id="pj_d">{{v81}}</em> {{v82}}</h2>
+    <p class="lead rv d1">{{v83}}</p>
+    <div class="card rv d2" style="margin-top:20px">
+      <div class="chartbox" id="chart"></div>
+    </div>
+    <div class="kpis3 rv d3">
+      <div><b class="num" style="color:var(--bnc)" id="pj_b"></b><span>Capital en BNC</span></div>
+      <div><b class="num" style="color:var(--orange)" id="pj_s"></b><span>Capital en SEL</span></div>
+      <div class="hl"><b class="num" id="pj_d2"></b><span>Avantage SEL</span></div>
+    </div>
+    <p class="note rv d4">{{v84}}</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide" id="s8">
+  <div class="wrap">
+    <div class="eyebrow rv"><i>{{v85}}</i>Simulateur</div>
+    <h2 class="rv d1">Et si on ajustait ?</h2>
+    <div class="sim rv d2">
+      <div class="card ctrl">
+        <div class="cg"><h4>Votre situation</h4>
+        <div><label for="ag">Âge actuel</label><div class="val num" id="agv">{{v86}}</div>
+          <input type="range" id="ag" min="28" max="60" step="1" value="{{v129}}"><div class="rng"><span>{{v87}}</span><span>{{v88}}</span></div></div>
+        <div><label for="r">Rémunération nette versée par la SEL</label><div class="val num" id="rv">{{v89}}</div>
+          <input type="range" id="r" min="80000" max="170000" step="500" value="{{v130}}"><div class="rng"><span>{{v90}}</span><span>{{v91}}</span></div></div>
+        <div><label for="t">Taux de placement de l'épargne</label><div class="val num" id="tv">{{v92}}</div>
+          <input type="range" id="t" min="0" max="5" step="0.25" value="{{v131}}"><div class="rng"><span>{{v93}}</span><span>{{v94}}</span></div></div>
+        <div><label for="a">Âge de départ à la retraite</label><div class="val num" id="av">{{v95}}</div>
+          <input type="range" id="a" min="60" max="70" step="1" value="{{v132}}"><div class="rng"><span>{{v96}}</span><span>{{v97}}</span></div></div>
+        </div><div class="cg"><h4>Patientèle et crédit</h4>
+        <div><label for="v">Valorisation de la patientèle</label><div class="val num" id="vv">{{v98}}</div>
+          <input type="range" id="v" min="0" max="100000" step="1000" value="{{v133}}"><div class="rng"><span>{{v99}}</span><span>{{v100}}</span></div></div>
+        <div><label for="lr">Taux du crédit</label><div class="val num" id="lrv">{{v101}}</div>
+          <input type="range" id="lr" min="1" max="7" step="0.25" value="{{v134}}"><div class="rng"><span>{{v102}}</span><span>{{v103}}</span></div></div>
+        <div><label for="ld">Durée du crédit</label><div class="val num" id="ldv">{{v104}}</div>
+          <input type="range" id="ld" min="3" max="12" step="1" value="{{v135}}"><div class="rng"><span>{{v105}}</span><span>{{v106}}</span></div></div>
+        </div>
+        <button class="reset" id="reset">Revenir à la simulation</button>
+      </div>
+      <div class="card out">
+        <table>
+          <thead><tr><th>Par an</th><th>BNC</th><th>SEL</th></tr></thead>
+          <tbody>
+            <tr><td>Cotisations sociales</td><td class="num" id="o_cs_b"></td><td class="num s" id="o_cs_s"></td></tr>
+            <tr><td>Impôt sur le revenu du foyer</td><td class="num" id="o_ir_b"></td><td class="num s" id="o_ir_s"></td></tr>
+            <tr><td>Impôt sur les sociétés</td><td class="num">–</td><td class="num s" id="o_is"></td></tr>
+            <tr><td>Épargne personnelle</td><td class="num" id="o_ep_b"></td><td class="num s" id="o_ep_s"></td></tr>
+            <tr><td>Réserves de la société</td><td class="num">–</td><td class="num s" id="o_res"></td></tr>
+            <tr><td id="o_loan_l">{{v107}}</td><td class="num">–</td><td class="num s" id="o_loan"></td></tr>
+            <tr class="big"><td>Épargne totale</td><td class="num" id="o_tot_b"></td><td class="num s" id="o_tot_s"></td></tr>
+          </tbody>
+        </table>
+        <div class="res">
+          <div><b class="num" id="o_delta"></b><span>d'épargne en plus par an</span></div>
+          <div><b class="num" id="o_cap"></b><span id="o_cap_l">de capital en plus à la retraite</span></div>
+        </div>
+        <div class="pvals2"><div><span>{{v108}}</span><b class="num" id="o_net"></b></div><div><span>Mensualité du crédit</span><b class="num" id="o_pmt"></b></div></div>
+        <div class="warn" id="warn">Avec cette rémunération, le train de vie du foyer n'est plus entièrement couvert : l'épargne personnelle devient négative.</div>
+      </div>
+    </div>
+  <div class="card rv d3 simchart"><div class="sclab"><span>Capital à la retraite</span><span class="leg"><i style="background:var(--orange)"></i>SEL <i style="background:var(--bnc)"></i>BNC <i style="background:hsl(0 72% 50%)"></i>Rachat de la patientèle <i style="background:repeating-linear-gradient(90deg,hsl(28 88% 52% / .6) 0 4px,transparent 4px 7px)"></i>Simulation initiale</span></div><div class="chartbox" id="chart2"></div></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide alt" id="s9">
+  <div class="wrap">
+    <div class="eyebrow rv"><i>{{v109}}</i>Le calendrier</div>
+    <h2 class="rv d1"><em>{{v110}}</em> jusqu'à votre SEL</h2>
+    <p class="lead rv d1">À partir de votre accord, voici comment MYsel mène la création, étape par étape.</p>
+    <div class="tl rv d2" id="tl"></div>
+    <div class="card tldet rv d3" id="tldet"></div>
+  </div>
+</section>
+
+<!-- 9b -->
+<section class="slide" id="s9b">
+  <div class="wrap">
+    <div class="eyebrow rv"><i>{{v111}}</i>L'investissement</div>
+    <h2 class="rv d1">Combien ça <em>coûte</em> ?</h2>
+    <p class="lead rv d1">{{v112}}</p>
+    <div class="prices">
+      <div class="card price rv d2">
+        <span class="k">Création · une fois</span>
+        <h3>SEL valorisation</h3>
+        <div class="amt"><b class="num">{{v113}}</b><span>HT</span></div>
+        <p class="sub">{{v114}}</p>
+        <ul><li>Création de votre SEL</li><li>Accompagnement juridique</li><li>Structuration initiale</li><li>Mise en place complète</li><li>Valorisation de patientèle</li></ul>
+      </div>
+      <div class="card price rv d3">
+        <span class="k">Chaque mois</span>
+        <h3>Expertise comptable SEL</h3>
+        <div class="amt"><b class="num">{{v115}}</b><span>HT / mois</span></div>
+        <p class="sub">{{v116}}</p>
+        <ul><li>Suivi comptable complet</li><li>Déclarations fiscales</li><li>Pilotage de votre activité</li><li>Support continu</li></ul>
+      </div>
+    </div>
+    <p class="pnote rv d4">À mettre en regard des <b class="num">{{v117}}</b> d'épargne supplémentaire chaque année avec la SEL.</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide alt" id="s10">
+  <div class="wrap grid2">
+    <div>
+      <div class="eyebrow rv"><i>{{v118}}</i>Prochaine étape</div>
+      <h2 class="rv d1">On continue sur votre <em>groupe WhatsApp Pro</em></h2>
+      <p class="lead rv d1">Vos questions, nos échanges et vos documents au même endroit : plus simple et plus réactif que par mail.</p>
+      <p class="rv d2" style="margin-top:22px;font-weight:600">Nous vous y demanderons notamment :</p>
+      <div class="docs rv d2"><span>Carte d'identité</span><span>Justificatif de domicile</span><span>Carte Vitale</span><span>Livret de famille</span><span>Diplômes</span><span>Attestation d'inscription à l'Ordre</span><span>Numéro RPPS</span><span class="more">…</span></div>
+    </div>
+    <div class="chat rv d2" aria-hidden="true">
+      <div class="chathead"><span class="cimg" style="--ar:744/283;background-image:url(https://mysel.fr/assets/mysel-logo-Dk2apt4G.png);background-size:117.61% auto;background-position:47.33% 53.21%"></span><div><b>{{v119}}</b><span>Groupe WhatsApp Pro</span></div></div>
+      <div class="msgs">
+        <div class="msg in">{{v120}}</div>
+        <div class="msg out file">Carte_identite.pdf</div>
+        <div class="msg out file">Attestation_Ordre.pdf</div>
+        <div class="msg out">Et pour le numéro RPPS, je vous l'envoie ce soir.</div>
+        <div class="msg in">Parfait, on s'occupe du reste.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide merci" id="s11">
+  <div class="wrap" style="text-align:center">
+    <span class="cimg rv" style="--ar:744/208;background-image:url(https://mysel.fr/assets/mysel-logo-Dk2apt4G.png);background-size:117.61% auto;background-position:47.33% 47.23%;height:78px;width:auto;margin:0 auto 26px" role="img" aria-label="MYsel"></span>
+    <p class="rv d1 slogan">Avec nous, les papiers, c'est plié.</p>
+    <h1 class="rv d2">Merci</h1>
+    <p class="rv d2">N'hésitez pas à nous poser toutes vos questions.</p>
+  </div>
+</section>
+</main></template>
+<script src="app.js"></script>
+</body>
+</html>
